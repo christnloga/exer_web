@@ -246,20 +246,20 @@ const intersection = [
 
 const team = [
     {
-        name: 'Joseph Christ Nloga',
-        role: 'Solution Architect & UX Designer',
-        bio: 'Joseph leads the architecture and user experience of EXER’s digital health solutions — translating complex healthcare problems into clear, intuitive and well-structured products.',
-        image:
-            '/Gemini_Generated_Image_yxa8dpyxa8dpyxa8.png',
-        alt: 'Joseph Christ Nloga — Solution Architect & UX Designer',
-    },
-    {
         name: 'Emeline Ghislaine Mamekong',
         role: 'Digital Health Product Strategist, Biomedical Scientist',
         bio: 'Emeline combines biomedical science with product strategy, grounding every EXER decision in evidence and a deep understanding of the patients, providers and systems we design for.',
         image:
-            '/file_0000000048a4820e9ccdf2939ae63c05.png',
+            '/file_0000000048a4820e9ccdf2939ae63c05.jpg',
         alt: 'Emeline Ghislaine Mamekong — Digital Health Product Strategist, Biomedical Scientist',
+    },
+    {
+        name: 'Joseph Christ Nloga',
+        role: 'Solution Architect & UX Designer',
+        bio: 'Joseph leads the architecture and user experience of EXER’s digital health solutions — translating complex healthcare problems into clear, intuitive and well-structured products.',
+        image:
+            '/Gemini_Generated_Image_yxa8dpyxa8dpyxa8.jpg',
+        alt: 'Joseph Christ Nloga — Solution Architect & UX Designer',
     },
 ];
 
@@ -268,7 +268,7 @@ const team = [
 /* ------------------------------------------------------------------ */
 
 const SectionBadge = ({ children }: { children: ReactNode }) => (
-    <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-primary uppercase shadow-[0_0_15px_-3px_rgba(0,166,244,0.4)]">
+    <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-primary uppercase">
         {children}
     </span>
 );
@@ -637,9 +637,12 @@ const Home = () => {
                     className="scroll-mt-28 px-4 py-20 lg:py-28"
                 >
                     <div className="mx-auto max-w-6xl">
+
+                        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
                         <RevealElement>
                             <SectionIntro
                                 badge="Meet the Team"
+                                align="left"
                                 title={
                                     <>
                                         The people behind{' '}
@@ -649,20 +652,18 @@ const Home = () => {
                                 subtitle="A complementary team combining biomedical science, product strategy, software architecture and UX design to improve digital health experiences."
                             />
                         </RevealElement>
-
-                        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
                             {team.map((member, i) => (
                                 <RevealElement key={member.name} delay={i * 100}>
                                     <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card/70 shadow-lg shadow-foreground/5 backdrop-blur-xl transition-all hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-[0_20px_50px_-20px_rgba(0,166,244,0.4)] dark:shadow-black/30">
                                         {/* Photo */}
-                                        <div className="relative aspect-[4/5] overflow-hidden">
+                                        <div className="relative aspect-4/4.5 overflow-hidden">
                                             <img
                                                 src={member.image}
                                                 alt={member.alt}
                                                 loading="lazy"
                                                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
-                                            <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/15 to-transparent" />
+                                            <div className="absolute inset-0 transition-all duration-200 bg-linear-to-t from-black/80 via-black/20 to-transparent hover:to-black/50" />
 
                                             {/* Role badge */}
                                             <div className="absolute top-4 left-4 flex items-center gap-1.5 rounded-full bg-black/30 px-3 py-1 text-[10px] font-bold tracking-widest text-white uppercase backdrop-blur-md">
@@ -672,21 +673,21 @@ const Home = () => {
 
                                             {/* Name over image */}
                                             <div className="absolute inset-x-0 bottom-0 p-6">
-                                                <h3 className="text-2xl font-bold text-white">
+                                                <h3 className="text-lg font-bold text-white">
                                                     {member.name}
                                                 </h3>
-                                                <p className="mt-1.5 text-sm leading-snug font-semibold text-white/90">
+                                                <p className="mt-1.5 text-xs leading-snug font-medium text-white/90">
                                                     {member.role}
                                                 </p>
                                             </div>
                                         </div>
 
                                         {/* Bio */}
-                                        <div className="flex flex-1 flex-col p-6">
+                                        {/* <div className="flex flex-1 flex-col p-6">
                                             <p className="text-sm leading-relaxed text-muted-foreground">
                                                 {member.bio}
                                             </p>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </RevealElement>
                             ))}
