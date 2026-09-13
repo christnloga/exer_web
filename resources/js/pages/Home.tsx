@@ -250,7 +250,7 @@ const team = [
         role: 'Solution Architect & UX Designer',
         bio: 'Joseph leads the architecture and user experience of EXER’s digital health solutions — translating complex healthcare problems into clear, intuitive and well-structured products.',
         image:
-            'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80',
+            '/Gemini_Generated_Image_yxa8dpyxa8dpyxa8.png',
         alt: 'Joseph Christ Nloga — Solution Architect & UX Designer',
     },
     {
@@ -258,7 +258,7 @@ const team = [
         role: 'Digital Health Product Strategist, Biomedical Scientist',
         bio: 'Emeline combines biomedical science with product strategy, grounding every EXER decision in evidence and a deep understanding of the patients, providers and systems we design for.',
         image:
-            'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80',
+            '/file_0000000048a4820e9ccdf2939ae63c05.png',
         alt: 'Emeline Ghislaine Mamekong — Digital Health Product Strategist, Biomedical Scientist',
     },
 ];
