@@ -8,7 +8,7 @@ import {
     BadgeCheck,
     BookOpen,
     Brain,
-    CalendarDays,
+    CalendarRange,
     ClipboardCheck,
     Compass,
     Cpu,
@@ -30,7 +30,6 @@ import {
     Sparkles,
     Stethoscope,
     Target,
-    Trophy,
     Users,
 } from 'lucide-react';
 import RevealElement from '@/components/RevealElement';
@@ -109,39 +108,18 @@ const approach = [
     },
 ];
 
-const workshopWeeks = [
-    {
-        week: 'Week 1',
-        title: 'Think Before You Build',
-        description: 'Understanding healthcare problems before designing solutions.',
-    },
-    {
-        week: 'Week 2',
-        title: 'AI in Digital Health',
-        description: 'From hype to practical use.',
-    },
-    {
-        week: 'Week 3',
-        title: 'Designing Better Healthcare Experiences',
-        description: 'Understanding users, journeys and pain points.',
-    },
-    {
-        week: 'Week 4',
-        title: 'UX in Action',
-        description: 'Applying UX principles to a real digital health product.',
-    },
-];
-
 const whyJoin = [
     {
         icon: BookOpen,
         title: 'Learn',
-        description: 'Understand the foundations of UX and digital health innovation.',
+        description:
+            'Understand the foundations of UX and digital health innovation.',
     },
     {
         icon: Hammer,
         title: 'Practice',
-        description: 'Work on real healthcare problems and digital health products.',
+        description:
+            'Work on real healthcare problems and digital health products.',
     },
     {
         icon: Users,
@@ -190,7 +168,11 @@ const pricing = [
             'Transform a healthcare problem into a validated product opportunity.',
         price: 'Request a quote',
         featured: true,
-        features: ['Problem framing', 'Validation sprints', 'Product definition'],
+        features: [
+            'Problem framing',
+            'Validation sprints',
+            'Product definition',
+        ],
     },
     {
         name: 'Product Strategy Consultation',
@@ -201,10 +183,15 @@ const pricing = [
     },
     {
         name: 'Custom Consultancy',
-        description: 'Tailored support for your specific digital health challenge.',
+        description:
+            'Tailored support for your specific digital health challenge.',
         price: 'Request a quote',
         featured: false,
-        features: ['Scoped to your needs', 'Flexible engagement', 'Ongoing support'],
+        features: [
+            'Scoped to your needs',
+            'Flexible engagement',
+            'Ongoing support',
+        ],
     },
 ];
 
@@ -249,16 +236,14 @@ const team = [
         name: 'Emeline Ghislaine Mamekong',
         role: 'Digital Health Product Strategist, Biomedical Scientist',
         bio: 'Emeline combines biomedical science with product strategy, grounding every EXER decision in evidence and a deep understanding of the patients, providers and systems we design for.',
-        image:
-            '/file_0000000048a4820e9ccdf2939ae63c05.jpg',
+        image: '/file_0000000048a4820e9ccdf2939ae63c05.jpg',
         alt: 'Emeline Ghislaine Mamekong — Digital Health Product Strategist, Biomedical Scientist',
     },
     {
         name: 'Joseph Christ Nloga',
         role: 'Solution Architect & UX Designer',
         bio: 'Joseph leads the architecture and user experience of EXER’s digital health solutions — translating complex healthcare problems into clear, intuitive and well-structured products.',
-        image:
-            '/Gemini_Generated_Image_yxa8dpyxa8dpyxa8.jpg',
+        image: '/Professional Photo.jpg',
         alt: 'Joseph Christ Nloga — Solution Architect & UX Designer',
     },
 ];
@@ -288,7 +273,9 @@ const SectionIntro = ({
 }: SectionIntroProps) => (
     <div
         className={`flex flex-col gap-4 ${
-            align === 'center' ? 'items-center text-center' : 'items-start text-left'
+            align === 'center'
+                ? 'items-center text-center'
+                : 'items-start text-left'
         }`}
     >
         <SectionBadge>{badge}</SectionBadge>
@@ -321,8 +308,12 @@ const HeroVisual = () => (
                     <HeartPulse className="size-5" />
                 </span>
                 <div>
-                    <p className="text-sm font-bold text-foreground">User-Centered</p>
-                    <p className="text-[11px] text-muted-foreground">Built around real needs</p>
+                    <p className="text-sm font-bold text-foreground">
+                        User-Centered
+                    </p>
+                    <p className="text-[11px] text-muted-foreground">
+                        Built around real needs
+                    </p>
                 </div>
             </div>
         </motion.div>
@@ -338,8 +329,12 @@ const HeroVisual = () => (
                     <Brain className="size-5" />
                 </span>
                 <div>
-                    <p className="text-sm font-bold text-foreground">AI-Powered</p>
-                    <p className="text-[11px] text-muted-foreground">Evidence & insight</p>
+                    <p className="text-sm font-bold text-foreground">
+                        AI-Powered
+                    </p>
+                    <p className="text-[11px] text-muted-foreground">
+                        Evidence & insight
+                    </p>
                 </div>
             </div>
         </motion.div>
@@ -355,8 +350,12 @@ const HeroVisual = () => (
                     <Stethoscope className="size-5" />
                 </span>
                 <div>
-                    <p className="text-sm font-bold text-foreground">Clinical UX</p>
-                    <p className="text-[11px] text-muted-foreground">For providers & patients</p>
+                    <p className="text-sm font-bold text-foreground">
+                        Clinical UX
+                    </p>
+                    <p className="text-[11px] text-muted-foreground">
+                        For providers & patients
+                    </p>
                 </div>
             </div>
         </motion.div>
@@ -405,7 +404,13 @@ const HeroVisual = () => (
                     preserveAspectRatio="none"
                 >
                     <defs>
-                        <linearGradient id="ecg-gradient" x1="0" y1="0" x2="1" y2="0">
+                        <linearGradient
+                            id="ecg-gradient"
+                            x1="0"
+                            y1="0"
+                            x2="1"
+                            y2="0"
+                        >
                             <stop offset="0%" stopColor="#00A6F4" />
                             <stop offset="100%" stopColor="#0d3976" />
                         </linearGradient>
@@ -532,13 +537,13 @@ const Home = () => {
                                     className="mt-2 flex w-full flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start"
                                 >
                                     <a
-                                        href="#workshop"
+                                        href={`/${locale}/workshops`}
                                         className="group relative flex h-13 items-center justify-center gap-2 overflow-hidden rounded-xl bg-primary px-7 text-sm font-bold text-white shadow-lg transition-all hover:scale-[1.03] hover:shadow-[0_0_40px_-10px_rgba(0,166,244,0.8)]"
                                     >
                                         <div className="absolute inset-0 bg-white/20 opacity-0 transition-opacity group-hover:opacity-100" />
                                         <GraduationCap className="relative z-10 size-5" />
                                         <span className="relative z-10">
-                                            Register for the Free Workshop
+                                            Explore our Free Workshops
                                         </span>
                                     </a>
                                     <a
@@ -578,10 +583,7 @@ const Home = () => {
                 </section>
 
                 {/* ============ WHO IS EXER ============ */}
-                <section
-                    id="who"
-                    className="scroll-mt-28 px-4 py-20 lg:py-28"
-                >
+                <section id="who" className="scroll-mt-28 px-4 py-20 lg:py-28">
                     <div className="mx-auto max-w-6xl">
                         <RevealElement>
                             <SectionIntro
@@ -599,95 +601,87 @@ const Home = () => {
                             />
                         </RevealElement>
 
-                        <RevealElement delay={100}>
+                        {/* <RevealElement delay={100}>
                             <div className="mt-12 rounded-3xl border border-border bg-card/60 p-8 backdrop-blur-xl lg:p-10">
                                 <p className="mb-8 text-center text-sm font-semibold tracking-[0.2em] text-muted-foreground uppercase">
                                     Our approach
                                 </p>
                                 <div className="flex flex-wrap items-center justify-center gap-3 lg:gap-4">
-                                    {['Discover', 'Validate', 'Define', 'Design', 'Deploy'].map(
-                                        (step, i) => (
-                                            <div
-                                                key={step}
-                                                className="flex items-center gap-3 lg:gap-4"
-                                            >
-                                                <span className="rounded-xl border border-primary/20 bg-primary/5 px-4 py-2.5 text-sm font-bold text-foreground lg:px-5">
-                                                    {step}
-                                                </span>
-                                                {i < 4 && (
-                                                    <ArrowRight className="size-4 shrink-0 text-primary" />
-                                                )}
-                                            </div>
-                                        ),
-                                    )}
+                                    {[
+                                        'Discover',
+                                        'Validate',
+                                        'Define',
+                                        'Design',
+                                        'Deploy',
+                                    ].map((step, i) => (
+                                        <div
+                                            key={step}
+                                            className="flex items-center gap-3 lg:gap-4"
+                                        >
+                                            <span className="rounded-xl border border-primary/20 bg-primary/5 px-4 py-2.5 text-sm font-bold text-foreground lg:px-5">
+                                                {step}
+                                            </span>
+                                            {i < 4 && (
+                                                <ArrowRight className="size-4 shrink-0 text-primary" />
+                                            )}
+                                        </div>
+                                    ))}
                                 </div>
                                 <p className="mt-8 text-center text-base text-muted-foreground lg:text-lg">
-                                    We believe better digital health solutions begin by
-                                    understanding the people, problems and healthcare
-                                    environments they are designed for.
+                                    We believe better digital health solutions
+                                    begin by understanding the people, problems
+                                    and healthcare environments they are
+                                    designed for.
                                 </p>
                             </div>
-                        </RevealElement>
+                        </RevealElement> */}
                     </div>
                 </section>
 
                 {/* ============ MEET THE TEAM ============ */}
-                <section
-                    id="team"
-                    className="scroll-mt-28 px-4 py-20 lg:py-28"
-                >
+                <section id="team" className="scroll-mt-28 px-4 py-20 lg:py-28">
                     <div className="mx-auto max-w-6xl">
-
                         <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
-                        <RevealElement>
-                            <SectionIntro
-                                badge="Meet the Team"
-                                align="left"
-                                title={
-                                    <>
-                                        The people behind{' '}
-                                        <span className="text-primary">EXER</span>
-                                    </>
-                                }
-                                subtitle="A complementary team combining biomedical science, product strategy, software architecture and UX design to improve digital health experiences."
-                            />
-                        </RevealElement>
+                            <RevealElement>
+                                <SectionIntro
+                                    badge="Meet the Team"
+                                    align="left"
+                                    title={
+                                        <>
+                                            The people behind{' '}
+                                            <span className="text-primary">
+                                                EXER
+                                            </span>
+                                        </>
+                                    }
+                                    subtitle="A complementary team combining biomedical science, product strategy, software architecture and UX design to improve digital health experiences."
+                                />
+                            </RevealElement>
                             {team.map((member, i) => (
-                                <RevealElement key={member.name} delay={i * 100}>
-                                    <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card/70 shadow-lg shadow-foreground/5 backdrop-blur-xl transition-all hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-[0_20px_50px_-20px_rgba(0,166,244,0.4)] dark:shadow-black/30">
+                                <RevealElement
+                                    key={member.name}
+                                    delay={i * 100}
+                                >
+                                    <div className="group flex h-full flex-col items-center justify-start gap-4 py-10 text-center transition-all">
                                         {/* Photo */}
-                                        <div className="relative aspect-4/4.5 overflow-hidden">
+                                        <div className="relative size-40 shrink-0 overflow-hidden rounded-full ring-2 ring-primary/20 ring-offset-4 ring-offset-card">
                                             <img
                                                 src={member.image}
                                                 alt={member.alt}
                                                 loading="lazy"
-                                                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                                className="h-full w-full scale-125 object-cover object-top transition-transform duration-700 group-hover:scale-110"
                                             />
-                                            <div className="absolute inset-0 transition-all duration-200 bg-linear-to-t from-black/80 via-black/20 to-transparent hover:to-black/50" />
-
-                                            {/* Role badge */}
-                                            <div className="absolute top-4 left-4 flex items-center gap-1.5 rounded-full bg-black/30 px-3 py-1 text-[10px] font-bold tracking-widest text-white uppercase backdrop-blur-md">
-                                                <Users className="size-3" />
-                                                Team
-                                            </div>
-
-                                            {/* Name over image */}
-                                            <div className="absolute inset-x-0 bottom-0 p-6">
-                                                <h3 className="text-lg font-bold text-white">
-                                                    {member.name}
-                                                </h3>
-                                                <p className="mt-1.5 text-xs leading-snug font-medium text-white/90">
-                                                    {member.role}
-                                                </p>
-                                            </div>
                                         </div>
 
-                                        {/* Bio */}
-                                        {/* <div className="flex flex-1 flex-col p-6">
-                                            <p className="text-sm leading-relaxed text-muted-foreground">
-                                                {member.bio}
+                                        {/* Name & role */}
+                                        <div className="flex flex-col gap-1.5">
+                                            <h3 className="text-md font-bold text-foreground">
+                                                {member.name}
+                                            </h3>
+                                            <p className="text-xs leading-snug font-medium text-muted-foreground">
+                                                {member.role}
                                             </p>
-                                        </div> */}
+                                        </div>
                                     </div>
                                 </RevealElement>
                             ))}
@@ -711,7 +705,10 @@ const Home = () => {
 
                         <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
                             {services.map((service, i) => (
-                                <RevealElement key={service.title} delay={i * 80}>
+                                <RevealElement
+                                    key={service.title}
+                                    delay={i * 80}
+                                >
                                     <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card/80 p-6 shadow-lg shadow-foreground/5 backdrop-blur-xl transition-all hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-[0_20px_50px_-20px_rgba(0,166,244,0.4)] dark:shadow-black/30">
                                         <div
                                             className={`absolute -top-12 -right-12 size-32 rounded-full bg-linear-to-br ${service.accent} opacity-0 blur-[50px] transition-opacity duration-500 group-hover:opacity-25`}
@@ -767,30 +764,35 @@ const Home = () => {
                             <SectionIntro
                                 badge="Our Approach"
                                 title="A process built around people, not just technology"
-                                subtitle="What differentiates EXER is how we work — evidence first, then design."
+                                // subtitle="What differentiates EXER is how we work — evidence first, then design."
                             />
                         </RevealElement>
 
                         <div className="relative mt-16">
                             {/* Connector line (desktop) */}
-                            <div className="pointer-events-none absolute top-8 right-0 left-0 hidden h-px bg-linear-to-r from-transparent via-primary/40 to-transparent lg:block" />
+                            <div className="pointer-events-none absolute right-0 bottom-[88px] left-0 hidden h-px bg-linear-to-r from-transparent via-primary/40 to-transparent lg:block" />
 
                             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
                                 {approach.map((step, i) => (
-                                    <RevealElement key={step.title} delay={i * 90}>
-                                        <div className="group relative flex h-full flex-col items-center rounded-3xl border border-border bg-card/60 p-6 text-center backdrop-blur-xl transition-all hover:-translate-y-1.5 hover:border-primary/30 lg:items-start lg:text-left">
-                                            <div className="relative z-10 mb-5 flex size-14 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary shadow-[0_0_20px_-5px_rgba(0,166,244,0.4)] transition-transform group-hover:scale-110">
-                                                <step.icon className="size-6" />
-                                            </div>
-                                            <span className="mb-2 text-xs font-extrabold tracking-widest text-primary">
+                                    <RevealElement
+                                        key={step.title}
+                                        delay={i * 90}
+                                    >
+                                        <div className="group relative flex h-full flex-col items-center p-6 text-center transition-all">
+                                            <span className="mb-4 flex size-10 items-center justify-center rounded-full bg-primary text-xs font-extrabold tracking-widest text-white">
                                                 {step.step}
                                             </span>
-                                            <h3 className="mb-2 text-lg font-bold text-foreground">
-                                                {step.title}
-                                            </h3>
-                                            <p className="text-sm leading-relaxed text-muted-foreground">
-                                                {step.description}
-                                            </p>
+                                            <div className="mb-6">
+                                                <h3 className="mb-2 text-lg font-bold text-foreground">
+                                                    {step.title}
+                                                </h3>
+                                                <p className="text-sm leading-relaxed text-muted-foreground">
+                                                    {step.description}
+                                                </p>
+                                            </div>
+                                            <div className="relative z-10 mt-auto flex size-32 items-center justify-center rounded-full border border-primary/20 bg-primary/10 text-primary transition-transform group-hover:scale-110">
+                                                <step.icon className="size-12" />
+                                            </div>
                                         </div>
                                     </RevealElement>
                                 ))}
@@ -800,10 +802,7 @@ const Home = () => {
                 </section>
 
                 {/* ============ FEATURED PROJECT — OHSA ============ */}
-                <section
-                    id="ohsa"
-                    className="scroll-mt-28 px-4 py-20 lg:py-28"
-                >
+                <section id="ohsa" className="scroll-mt-28 px-4 py-20 lg:py-28">
                     <div className="mx-auto max-w-6xl">
                         <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-card/60 backdrop-blur-xl dark:shadow-2xl">
                             <div className="pointer-events-none absolute -top-32 -right-32 size-96 rounded-full bg-primary/10 blur-[100px]" />
@@ -813,11 +812,14 @@ const Home = () => {
                                 {/* Story */}
                                 <div className="flex flex-col gap-6">
                                     <RevealElement>
-                                        <SectionBadge>Featured Project</SectionBadge>
+                                        <SectionBadge>
+                                            Featured Project
+                                        </SectionBadge>
                                     </RevealElement>
                                     <RevealElement delay={60}>
                                         <h2 className="text-3xl font-bold tracking-tight text-foreground lg:text-4xl">
-                                            Building Better Healthcare Experiences with{' '}
+                                            Building Better Healthcare
+                                            Experiences with{' '}
                                             <span className="text-primary">
                                                 AI
                                             </span>
@@ -825,13 +827,14 @@ const Home = () => {
                                     </RevealElement>
                                     <RevealElement delay={120}>
                                         <p className="text-base leading-relaxed text-muted-foreground lg:text-lg">
-                                            EXER is currently contributing to the
-                                            development and user experience of{' '}
+                                            EXER is currently contributing to
+                                            the development and user experience
+                                            of{' '}
                                             <span className="font-semibold text-foreground">
                                                 OHSA
                                             </span>
-                                            , an AI-powered medical imaging solution
-                                            developed by{' '}
+                                            , an AI-powered medical imaging
+                                            solution developed by{' '}
                                             <span className="font-semibold text-foreground">
                                                 OMIRAI
                                             </span>
@@ -857,7 +860,10 @@ const Home = () => {
                                                 icon: MousePointerClick,
                                             },
                                         ].map((item) => (
-                                            <RevealElement key={item.label} delay={80}>
+                                            <RevealElement
+                                                key={item.label}
+                                                delay={80}
+                                            >
                                                 <div className="flex gap-4 rounded-2xl border border-border bg-background/50 p-5">
                                                     <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
                                                         <item.icon className="size-5" />
@@ -877,7 +883,7 @@ const Home = () => {
 
                                     <RevealElement delay={120}>
                                         <a
-                                            href="#workshop"
+                                            href="#ohsa"
                                             className="group mt-2 inline-flex h-13 w-fit items-center gap-2 rounded-xl border border-primary/30 bg-primary/10 px-7 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-white"
                                         >
                                             Explore the OHSA Project
@@ -916,9 +922,18 @@ const Home = () => {
 
                                         <div className="mt-6 grid grid-cols-3 gap-3">
                                             {[
-                                                { label: 'Interpretation', value: 'AI-supported' },
-                                                { label: 'Access', value: 'Improved' },
-                                                { label: 'Usability', value: 'User-centered' },
+                                                {
+                                                    label: 'Interpretation',
+                                                    value: 'AI-supported',
+                                                },
+                                                {
+                                                    label: 'Access',
+                                                    value: 'Improved',
+                                                },
+                                                {
+                                                    label: 'Usability',
+                                                    value: 'User-centered',
+                                                },
                                             ].map((item) => (
                                                 <div
                                                     key={item.label}
@@ -940,67 +955,72 @@ const Home = () => {
                     </div>
                 </section>
 
-                {/* ============ WORKSHOP ============ */}
-                <section
-                    id="workshop"
-                    className="scroll-mt-28 bg-card/30 px-4 py-20 lg:py-28"
-                >
+                {/* ============ WORKSHOPS TEASER ============ */}
+                <section className="scroll-mt-28 bg-card/30 px-4 py-20 lg:py-28">
                     <div className="mx-auto max-w-6xl">
                         <RevealElement>
-                            <SectionIntro
-                                badge="Free Workshop Series"
-                                title="UX Foundations for Digital Health Innovators"
-                                subtitle="A practical introductory workshop series designed for students, young professionals, healthcare professionals and aspiring innovators who want to understand how user experience can improve digital health solutions."
-                            />
-                        </RevealElement>
+                            <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-card/60 p-9 backdrop-blur-xl lg:p-12">
+                                <div className="pointer-events-none absolute -top-24 -right-24 size-64 rounded-full bg-secondary/10 blur-[80px]" />
+                                <div className="pointer-events-none absolute -bottom-24 -left-24 size-64 rounded-full bg-primary/10 blur-[80px]" />
 
-                        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                            {workshopWeeks.map((week, i) => (
-                                <RevealElement key={week.week} delay={i * 80}>
-                                    <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card/80 p-6 backdrop-blur-xl transition-all hover:-translate-y-1.5 hover:border-secondary/30">
-                                        <span className="mb-4 inline-flex w-fit items-center gap-2 rounded-full bg-secondary/10 px-3 py-1 text-[11px] font-extrabold tracking-widest text-secondary uppercase">
-                                            <CalendarDays className="size-3.5" />
-                                            {week.week}
-                                        </span>
-                                        <h3 className="mb-2 text-lg font-bold text-foreground">
-                                            {week.title}
-                                        </h3>
-                                        <p className="text-sm leading-relaxed text-muted-foreground">
-                                            {week.description}
-                                        </p>
-                                    </div>
-                                </RevealElement>
-                            ))}
-                        </div>
-
-                        {/* Final showcase banner */}
-                        <RevealElement delay={120}>
-                            <div className="relative mt-6 overflow-hidden rounded-3xl border border-primary/20 bg-linear-to-r from-primary/10 via-card to-secondary/10 p-8 backdrop-blur-xl">
-                                <div className="flex flex-col items-center gap-6 text-center lg:flex-row lg:justify-between lg:text-left">
-                                    <div className="flex flex-col gap-2">
-                                        <div className="flex items-center justify-center gap-2 lg:justify-start">
-                                            <Trophy className="size-5 text-primary" />
-                                            <h3 className="text-xl font-bold text-foreground">
-                                                Final Showcase & Graduation
-                                            </h3>
+                                <div className="relative z-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
+                                    <div className="lg:col-span-7">
+                                        <div className="flex flex-col items-start gap-5">
+                                            <SectionBadge>
+                                                <GraduationCap className="size-3.5" />
+                                                Free Workshops
+                                            </SectionBadge>
+                                            <h2 className="text-3xl font-bold tracking-tight text-foreground lg:text-4xl">
+                                                We occasionally launch{' '}
+                                                <span className="text-primary">
+                                                    free workshops
+                                                </span>{' '}
+                                                on UX &amp; digital health
+                                            </h2>
+                                            <p className="max-w-2xl text-base leading-relaxed text-muted-foreground lg:text-lg">
+                                                From time to time we open a free
+                                                workshop series for students,
+                                                health professionals and
+                                                innovators. Places are limited
+                                                and applications are only
+                                                accepted while an edition is
+                                                open.
+                                            </p>
+                                            <div className="mt-1 flex flex-wrap gap-2">
+                                                {whyJoin
+                                                    .slice(0, 3)
+                                                    .map((item) => (
+                                                        <span
+                                                            key={item.title}
+                                                            className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3.5 py-1.5 text-xs font-semibold text-muted-foreground"
+                                                        >
+                                                            <BadgeCheck className="size-3.5 text-primary" />
+                                                            {item.title}
+                                                        </span>
+                                                    ))}
+                                            </div>
                                         </div>
-                                        <p className="max-w-xl text-sm text-muted-foreground">
-                                            Present your work, connect with innovators
-                                            and receive your certificate.
-                                        </p>
                                     </div>
-                                    <div className="flex flex-col items-center gap-3">
-                                        <span className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-4 py-1.5 text-sm font-extrabold text-emerald-500">
-                                            <BadgeCheck className="size-4" />
-                                            100% Free
-                                        </span>
-                                        <Link
-                                            href={`/${locale}/workshops/digital-health-ux-foundations/apply`}
-                                            className="group flex h-12 items-center gap-2 rounded-xl bg-primary px-7 text-sm font-bold text-white shadow-lg transition-all hover:scale-[1.03]"
-                                        >
-                                            Register for the Workshop
-                                            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                                        </Link>
+
+                                    <div className="lg:col-span-5">
+                                        <div className="flex flex-col gap-4 rounded-3xl border border-border bg-background/60 p-7">
+                                            <span className="flex size-12 items-center justify-center rounded-2xl bg-secondary/10 text-secondary">
+                                                <CalendarRange className="size-6" />
+                                            </span>
+                                            <p className="text-sm leading-relaxed text-muted-foreground">
+                                                Browse past and ongoing
+                                                editions, the programme outline
+                                                and how to apply when a workshop
+                                                becomes available.
+                                            </p>
+                                            <Link
+                                                href={`/${locale}/workshops`}
+                                                className="group inline-flex h-12 w-fit items-center gap-2 rounded-xl bg-primary px-7 text-sm font-bold text-white shadow-lg transition-all hover:scale-[1.03] hover:shadow-[0_0_40px_-10px_rgba(0,166,244,0.8)]"
+                                            >
+                                                Explore Workshops
+                                                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1060,7 +1080,11 @@ const Home = () => {
                                 <RevealElement
                                     key={tier.name}
                                     delay={i * 70}
-                                    className={i === 4 ? 'sm:col-span-2 lg:col-span-1' : ''}
+                                    className={
+                                        i === 4
+                                            ? 'sm:col-span-2 lg:col-span-1'
+                                            : ''
+                                    }
                                 >
                                     <div
                                         className={`relative flex h-full flex-col overflow-hidden rounded-3xl border p-7 backdrop-blur-xl transition-all hover:-translate-y-1.5 ${
@@ -1124,9 +1148,9 @@ const Home = () => {
                                             Not sure what you need?
                                         </h3>
                                         <p className="text-sm text-muted-foreground">
-                                            Tell us about your product or healthcare
-                                            challenge and we'll recommend the right
-                                            service.
+                                            Tell us about your product or
+                                            healthcare challenge and we'll
+                                            recommend the right service.
                                         </p>
                                     </div>
                                 </div>
@@ -1226,7 +1250,8 @@ const Home = () => {
                                                     <item.icon className="size-4.5 text-primary" />
                                                     {item.label}
                                                 </span>
-                                                {i < intersection.length - 1 && (
+                                                {i <
+                                                    intersection.length - 1 && (
                                                     <span className="text-lg font-black text-primary">
                                                         ×
                                                     </span>
@@ -1239,10 +1264,11 @@ const Home = () => {
                                 <RevealElement delay={160}>
                                     <p className="mt-8 text-base leading-relaxed text-muted-foreground lg:text-lg">
                                         We don't approach healthcare products as
-                                        technology projects alone. We consider the
-                                        healthcare problem, the people using the
-                                        solution, the environment in which it will be
-                                        used, and the realities of implementation.
+                                        technology projects alone. We consider
+                                        the healthcare problem, the people using
+                                        the solution, the environment in which
+                                        it will be used, and the realities of
+                                        implementation.
                                     </p>
                                 </RevealElement>
                             </div>
@@ -1251,7 +1277,7 @@ const Home = () => {
                 </section>
 
                 {/* ============ ECOSYSTEM ============ */}
-                <section
+                {/* <section
                     id="ecosystem"
                     className="scroll-mt-28 px-4 py-20 lg:py-28"
                 >
@@ -1272,8 +1298,8 @@ const Home = () => {
                                         Learning Partners
                                     </span>
                                     <h3 className="mb-3 text-xl font-bold text-foreground">
-                                        Organizations participating in the workshop
-                                        series
+                                        Organizations participating in the
+                                        workshop series
                                     </h3>
                                     <p className="text-sm leading-relaxed text-muted-foreground">
                                         Mentors, institutions and community
@@ -1289,19 +1315,20 @@ const Home = () => {
                                         Project Partners / Clients
                                     </span>
                                     <h3 className="mb-3 text-xl font-bold text-foreground">
-                                        Organizations we build digital health products
-                                        with
+                                        Organizations we build digital health
+                                        products with
                                     </h3>
                                     <p className="text-sm leading-relaxed text-muted-foreground">
-                                        Healthcare organizations, startups and NGOs we
-                                        support in designing and validating real
-                                        digital health solutions.
+                                        Healthcare organizations, startups and
+                                        NGOs we support in designing and
+                                        validating real digital health
+                                        solutions.
                                     </p>
                                 </div>
                             </RevealElement>
                         </div>
                     </div>
-                </section>
+                </section> */}
 
                 {/* ============ FINAL CTA ============ */}
                 <section
@@ -1325,12 +1352,13 @@ const Home = () => {
                                             <Stethoscope className="size-6" />
                                         </span>
                                         <h3 className="mb-2 text-2xl font-bold text-foreground">
-                                            Have a healthcare problem worth solving?
+                                            Have a healthcare problem worth
+                                            solving?
                                         </h3>
                                         <p className="text-sm leading-relaxed text-muted-foreground">
-                                            Partner with EXER to design and validate a
-                                            digital solution around real healthcare
-                                            needs.
+                                            Partner with EXER to design and
+                                            validate a digital solution around
+                                            real healthcare needs.
                                         </p>
                                     </div>
                                     <Link
@@ -1351,20 +1379,22 @@ const Home = () => {
                                             <GraduationCap className="size-6" />
                                         </span>
                                         <h3 className="mb-2 text-2xl font-bold text-foreground">
-                                            Want to learn how digital health products
-                                            are designed?
+                                            Want to learn how digital health
+                                            products are designed?
                                         </h3>
                                         <p className="text-sm leading-relaxed text-muted-foreground">
-                                            Join our free workshop series and build
-                                            practical UX skills for digital health
-                                            innovation.
+                                            We occasionally open free workshops
+                                            that build practical UX skills for
+                                            digital health innovation. See what
+                                            is available and apply while there
+                                            is an open edition.
                                         </p>
                                     </div>
                                     <Link
-                                        href={`/${locale}/workshops/digital-health-ux-foundations/apply`}
+                                        href={`/${locale}/workshops`}
                                         className="relative z-10 mt-8 inline-flex h-13 w-fit items-center gap-2 rounded-xl border border-secondary/30 bg-secondary/10 px-8 text-sm font-bold text-secondary transition-all hover:bg-secondary hover:text-white"
                                     >
-                                        Join the Free Workshop
+                                        See the Free Workshops
                                         <ArrowRight className="size-4" />
                                     </Link>
                                 </div>

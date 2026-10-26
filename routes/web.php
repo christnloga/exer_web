@@ -28,6 +28,7 @@ Route::group([
     Route::post('/initiatives/now-just-create/apply', [ApplicantController::class, 'store'])->name('apply.store');
     Route::get('/initiatives/now-just-create/apply/success', [ApplicantController::class, 'success'])->name('apply.success');
     Route::get('/case-studies/{caseStudy}', [\App\Http\Controllers\CaseStudyController::class, 'show'])->name('case-study.show');
+    Route::get('/workshops', [WorkshopController::class, 'index'])->name('workshop.index');
     Route::get('/workshops/{workshop:slug}', [WorkshopController::class, 'show'])->name('workshop.show');
     Route::get('/workshops/{workshop:slug}/apply', [WorkshopController::class, 'create'])->name('workshop.apply');
     Route::post('/workshops/{workshop:slug}/apply', [WorkshopController::class, 'store'])->name('workshop.apply.store');

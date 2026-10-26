@@ -12,6 +12,43 @@ use Inertia\Response;
 class WorkshopController extends Controller
 {
     /**
+     * Display the list of workshops (upcoming / ongoing and past editions).
+     */
+    public function index(string $locale): Response
+    {
+        $ongoing = Workshop::query()
+            ->where('status', 'published')
+            ->withCount('applicants')
+            ->orderBy('start_date')
+            ->get();
+
+        $past = Workshop::query()
+            ->where('status', 'completed')
+            ->withCount('applicants')
+            ->orderByDesc('start_date')
+            ->get();
+
+        return Inertia::render('workshops/Index', [
+            'ongoingWorkshops' => $ongoing->map(fn (Workshop $workshop): array => $this->present($workshop))->values(),
+            'pastWorkshops' => $past->map(fn (Workshop $workshop): array => $this->present($workshop))->values(),
+        ]);
+    }
+
+    /**
+     * Serialize a workshop with its public registration state.
+     *
+     * @return array<string, mixed>
+     */
+    private function present(Workshop $workshop): array
+    {
+        return [
+            ...$workshop->toArray(),
+            'registration_open' => $workshop->isRegistrationOpen(),
+            'remaining_places' => $workshop->remainingPlaces(),
+        ];
+    }
+
+    /**
      * Display the workshop landing page.
      */
     public function show(string $locale, Workshop $workshop): Response

@@ -25,7 +25,10 @@ export type Block =
           type: 'code_snippet';
           data: { language: string; code: string };
       })
-    | (BaseBlock & { type: 'gallery'; data: { images: { url: string; caption?: string }[] } });
+    | (BaseBlock & {
+          type: 'gallery';
+          data: { images: { url: string; caption?: string }[] };
+      });
 
 export type CaseStudy = {
     id: string;
@@ -77,6 +80,8 @@ export type Workshop = {
     application_deadline: string | null;
     status: 'draft' | 'published' | 'completed' | 'cancelled';
     applicants_count?: number;
+    registration_open?: boolean;
+    remaining_places?: number | null;
     created_at: string;
     updated_at: string;
 };

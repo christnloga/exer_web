@@ -75,19 +75,16 @@ const Navbar = () => {
             isAnchor: true,
         },
         {
-            href: '#workshop',
-            title: t('Workshop'),
-            isActive: false,
-            isAnchor: true,
+            href: `/${locale}/workshops`,
+            title: t('Workshops'),
+            isActive: url.startsWith(`/${locale}/workshops`),
+            isAnchor: false,
         },
         {
-            // href: `/${locale}/contact`,
-            href: `/#contact`,
+            href: `/${locale}/contact`,
             title: t('Contact'),
-            // isActive: url.startsWith(`/${locale}/contact`),
-            isActive: false,
-            // isAnchor: false,
-            isAnchor: true,
+            isActive: url.startsWith(`/${locale}/contact`),
+            isAnchor: false,
         },
     ];
 
@@ -129,16 +126,14 @@ const Navbar = () => {
         <motion.nav
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            className={`fixed top-0 left-0 z-50 w-full bg-card/80 transition-all duration-300 backdrop-blur-xl ${
+            className={`fixed top-0 left-0 z-50 w-full bg-card/80 backdrop-blur-xl transition-all duration-300 ${
                 isScrolled ? 'py-0' : 'py-0'
             }`}
         >
             <div className="container mx-auto max-w-7xl px-0">
                 <div
                     className={`relative flex items-center justify-between px-6 py-3 transition-all duration-500 ${
-                        isScrolled
-                            ? 'scale-[1]'
-                            : 'scale-100'
+                        isScrolled ? 'scale-[1]' : 'scale-100'
                     }`}
                 >
                     {/* Background Glows */}
@@ -232,20 +227,20 @@ const Navbar = () => {
                             </div>
                         </div>
 
-                        {/* Join Workshop */}
+                        {/* Free Workshops */}
                         <Link
-                            href={`/${locale}/workshops/digital-health-ux-foundations/apply`}
-                            className="group relative flex items-center gap-2 overflow-hidden rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-white shadow-lg transition-all hover:scale-105 hover:shadow-[0_0_20px_-5px_rgba(0,166,244,0.5)]"
+                            href={`/${locale}/workshops`}
+                            className="group relative flex items-center gap-2 overflow-hidden rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-white shadow-lg transition-all hover:scale-105 hover:shadow-[0_0_20px_-5px_rgba(0,166,244,0.5)]"
                         >
                             <div className="absolute inset-0 bg-white/20 opacity-0 transition-opacity group-hover:opacity-100" />
                             <GraduationCap className="h-4 w-4" />
-                            <span>{t('Join Workshop')}</span>
+                            <span>{t('Free Workshops')}</span>
                         </Link>
 
                         {/* Work With Us */}
                         <Link
                             href={`/${locale}/contact`}
-                            className="flex items-center gap-2 rounded-xl border border-border bg-foreground/5 px-4 py-2.5 text-sm font-bold text-foreground transition-all hover:border-primary/30 hover:text-primary"
+                            className="flex items-center gap-2 rounded-xl border border-border bg-foreground/5 px-4 py-2.5 text-sm font-medium text-foreground transition-all hover:border-primary/30 hover:text-primary"
                         >
                             {t('Work With Us')}
                             <ArrowRight className="h-4 w-4" />
@@ -351,13 +346,14 @@ const Navbar = () => {
                                             </div>
                                         </div>
 
-                                        <a
-                                            href="#workshop"
+                                        <Link
+                                            href={`/${locale}/workshops`}
+                                            onClick={() => setMobileMenu(false)}
                                             className="flex w-full items-center justify-center gap-3 rounded-2xl bg-primary py-4 text-lg font-bold text-white shadow-xl shadow-primary/20"
                                         >
                                             <GraduationCap className="h-5 w-5" />
-                                            <span>{t('Join Workshop')}</span>
-                                        </a>
+                                            <span>{t('Free Workshops')}</span>
+                                        </Link>
                                         <Link
                                             href={`/${locale}/contact`}
                                             onClick={() => setMobileMenu(false)}

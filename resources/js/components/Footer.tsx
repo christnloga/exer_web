@@ -30,9 +30,9 @@ const Footer = () => {
             isAnchor: true,
         },
         {
-            href: '#workshop',
-            title: t('Workshop'),
-            isAnchor: true,
+            href: `/${locale}/workshops`,
+            title: t('Workshops'),
+            isAnchor: false,
         },
         {
             href: `/${locale}/contact`,
