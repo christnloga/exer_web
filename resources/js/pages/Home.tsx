@@ -669,7 +669,7 @@ const Home = () => {
                                                 src={member.image}
                                                 alt={member.alt}
                                                 loading="lazy"
-                                                className="h-full w-full scale-125 object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                                                className="h-full w-full object-cover object-top scale-125 transition-transform duration-700 group-hover:scale-110"
                                             />
                                         </div>
 
@@ -770,7 +770,7 @@ const Home = () => {
 
                         <div className="relative mt-16">
                             {/* Connector line (desktop) */}
-                            <div className="pointer-events-none absolute right-0 bottom-[88px] left-0 hidden h-px bg-linear-to-r from-transparent via-primary/40 to-transparent lg:block" />
+                            <div className="pointer-events-none absolute top-1/2 right-0 left-0 hidden h-px translate-y-5 bg-linear-to-r from-transparent via-primary/40 to-transparent lg:block" />
 
                             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
                                 {approach.map((step, i) => (
@@ -779,19 +779,19 @@ const Home = () => {
                                         delay={i * 90}
                                     >
                                         <div className="group relative flex h-full flex-col items-center p-6 text-center transition-all">
-                                            <span className="mb-4 flex size-10 items-center justify-center rounded-full bg-primary text-xs font-extrabold tracking-widest text-white">
+                                            <div className="relative z-10 mb-5 flex size-32 items-center justify-center rounded-full border border-primary/20 bg-primary/10 text-primary transition-transform group-hover:scale-110">
+                                                <step.icon className="size-12" />
+                                            </div>
+                                            <span className="mb-2 flex size-10 items-center justify-center rounded-full bg-primary text-xs font-extrabold tracking-widest text-white">
                                                 {step.step}
                                             </span>
-                                            <div className="mb-6">
+                                            <div className="">
                                                 <h3 className="mb-2 text-lg font-bold text-foreground">
                                                     {step.title}
                                                 </h3>
                                                 <p className="text-sm leading-relaxed text-muted-foreground">
                                                     {step.description}
                                                 </p>
-                                            </div>
-                                            <div className="relative z-10 mt-auto flex size-32 items-center justify-center rounded-full border border-primary/20 bg-primary/10 text-primary transition-transform group-hover:scale-110">
-                                                <step.icon className="size-12" />
                                             </div>
                                         </div>
                                     </RevealElement>
@@ -1029,7 +1029,7 @@ const Home = () => {
                 </section>
 
                 {/* ============ WHY JOIN ============ */}
-                <section
+                {/* <section
                     id="why-join"
                     className="scroll-mt-28 px-4 py-20 lg:py-28"
                 >
@@ -1059,7 +1059,7 @@ const Home = () => {
                             ))}
                         </div>
                     </div>
-                </section>
+                </section> */}
 
                 {/* ============ CONSULTANCY & PRICING ============ */}
                 <section
