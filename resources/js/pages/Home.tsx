@@ -1,6 +1,6 @@
 import { Head, Link, usePage } from '@inertiajs/react';
 import { motion } from 'motion/react';
-import { useEffect, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import {
     Activity,
     ArrowRight,
@@ -231,6 +231,91 @@ const intersection = [
     { icon: Lightbulb, label: 'Innovation' },
 ];
 
+const lenses = [
+    {
+        id: 'healthcare',
+        icon: HeartPulse,
+        label: 'Healthcare',
+        tagline: 'The clinical reality',
+        question:
+            'What does good care actually require — for the patient, the clinician, the health system?',
+        description:
+            'We start from how care is genuinely delivered: overstretched teams, referral gaps, records that never get digitised, patients without reliable power or literacy. Solutions that ignore this rarely survive a week in a real facility.',
+        outcomes: [
+            'Workflow mapping across patient, clinician and system',
+            'Requirements grounded in clinical protocols, not assumptions',
+            'A realistic view of what teams can absorb on day one',
+        ],
+        accent: {
+            text: 'text-primary',
+            chip: 'bg-primary/10',
+            glow: 'bg-primary/25',
+            dot: 'bg-primary',
+        },
+    },
+    {
+        id: 'technology',
+        icon: Cpu,
+        label: 'Technology',
+        tagline: 'What the system can bear',
+        question:
+            'Which technology actually fits this setting — and who maintains it after launch?',
+        description:
+            'Not every problem needs AI. We weigh connectivity, devices, data quality and interoperability against the simplest option that still holds. Then we ask the question most teams skip: who keeps this running in year two?',
+        outcomes: [
+            'Feasibility reviews against real infrastructure',
+            'Interoperability and data-quality checks',
+            'Architecture sized to daily operations',
+        ],
+        accent: {
+            text: 'text-secondary',
+            chip: 'bg-secondary/10',
+            glow: 'bg-secondary/25',
+            dot: 'bg-secondary',
+        },
+    },
+    {
+        id: 'ux',
+        icon: MousePointerClick,
+        label: 'UX',
+        tagline: 'What it feels like to use',
+        question: 'Can a tired clinician at 2 a.m. use this without a manual?',
+        description:
+            'Design happens around the person at the end of the process — their language, literacy, cognitive load and interruptions. Usability is not polish; it is the difference between a tool that gets adopted and one that is quietly abandoned.',
+        outcomes: [
+            'Research with patients, providers and support staff',
+            'Prototypes tested under realistic conditions',
+            'Interfaces built for the device people actually hold',
+        ],
+        accent: {
+            text: 'text-violet-500',
+            chip: 'bg-violet-500/10',
+            glow: 'bg-violet-500/25',
+            dot: 'bg-violet-500',
+        },
+    },
+    {
+        id: 'innovation',
+        icon: Lightbulb,
+        label: 'Innovation',
+        tagline: 'How it actually gets adopted',
+        question: 'Who has to change what they do for this to work?',
+        description:
+            'Innovation is not the demo. It is the training session, the champion in the ward, the budget line, the policy that permits it. We plan for adoption from the first workshop so good ideas stop dying in pilots.',
+        outcomes: [
+            'Adoption and rollout planning from day one',
+            'Alignment across clinical, technical and leadership teams',
+            'Evaluation that shows whether it worked — and for whom',
+        ],
+        accent: {
+            text: 'text-amber-500',
+            chip: 'bg-amber-500/10',
+            glow: 'bg-amber-500/25',
+            dot: 'bg-amber-500',
+        },
+    },
+];
+
 const team = [
     {
         name: 'Emeline Ghislaine Mamekong',
@@ -301,7 +386,7 @@ const HeroVisual = () => (
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.7 }}
-            className="absolute -top-6 -left-2 z-20 animate-[float_6s_ease-in-out_infinite] lg:-left-8"
+            className="absolute -top-6 -left-2 z-20 scale-90 animate-[float_6s_ease-in-out_infinite] lg:top-[40%] lg:-left-8 lg:scale-100"
         >
             <div className="flex items-center gap-2.5 rounded-2xl border border-border bg-card/90 px-4 py-3 shadow-xl backdrop-blur-xl">
                 <span className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
@@ -322,7 +407,7 @@ const HeroVisual = () => (
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.65, duration: 0.7 }}
-            className="absolute top-1/3 -right-2 z-20 animate-[float_7s_ease-in-out_infinite] lg:-right-10"
+            className="absolute top-[45%] -right-2 z-20 scale-90 animate-[float_7s_ease-in-out_infinite] lg:top-1/3 lg:-right-10 lg:scale-100"
         >
             <div className="flex items-center gap-2.5 rounded-2xl border border-border bg-card/90 px-4 py-3 shadow-xl backdrop-blur-xl">
                 <span className="flex size-9 items-center justify-center rounded-xl bg-secondary/10 text-secondary">
@@ -343,7 +428,7 @@ const HeroVisual = () => (
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.7 }}
-            className="absolute -bottom-6 left-6 z-20 animate-[float_8s_ease-in-out_infinite]"
+            className="absolute -bottom-6 left-6 z-20 scale-90 animate-[float_8s_ease-in-out_infinite] lg:scale-100"
         >
             <div className="flex items-center gap-2.5 rounded-2xl border border-border bg-card/90 px-4 py-3 shadow-xl backdrop-blur-xl">
                 <span className="flex size-9 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-500">
@@ -371,6 +456,259 @@ const HeroVisual = () => (
         />
     </div>
 );
+
+/* ------------------------------------------------------------------ */
+/*  Why EXER — four lenses                                             */
+/* ------------------------------------------------------------------ */
+
+const WhyExerLenses = () => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const activeLens = lenses[activeIndex];
+    const activeNumber = String(activeIndex + 1).padStart(2, '0');
+
+    const selectNextLens = () =>
+        setActiveIndex((current) => (current + 1) % lenses.length);
+
+    return (
+        <section id="why-exer" className="scroll-mt-28 px-4 py-20 lg:py-28">
+            <div className="mx-auto max-w-6xl">
+                {/* Header */}
+                <div className="relative grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
+                    <div className="pointer-events-none absolute -top-14 -left-10 hidden h-52 w-80 bg-[radial-gradient(circle_at_1px_1px,var(--color-border)_1px,transparent_0)] [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)] [background-size:20px_20px] opacity-80 lg:block" />
+
+                    <RevealElement className="relative lg:col-span-7">
+                        <SectionBadge>Why EXER</SectionBadge>
+                        <h2 className="mt-5 text-3xl leading-[1.15] font-bold tracking-tight text-foreground sm:text-4xl lg:text-[2.6rem]">
+                            Health problems don’t arrive in one discipline.
+                            <span className="mt-2 block bg-linear-to-r from-primary via-primary to-secondary bg-clip-text text-transparent">
+                                Neither should your solution.
+                            </span>
+                        </h2>
+                    </RevealElement>
+
+                    <RevealElement delay={120} className="lg:col-span-5">
+                        <p className="border-l-2 border-primary/30 pl-5 text-base leading-relaxed text-muted-foreground lg:text-[17px]">
+                            A product can be clinically sound, technically
+                            elegant and beautifully designed — and still be
+                            abandoned. Before we design anything, we test it
+                            against four lenses.
+                        </p>
+                    </RevealElement>
+                </div>
+
+                {/* Lens switcher + detail */}
+                <div className="mt-12 grid gap-6 lg:mt-16 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-10">
+                    {/* Mobile chooser */}
+                    <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden">
+                        {lenses.map((lens, i) => {
+                            const isActive = i === activeIndex;
+
+                            return (
+                                <button
+                                    key={lens.id}
+                                    type="button"
+                                    onClick={() => setActiveIndex(i)}
+                                    aria-pressed={isActive}
+                                    className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
+                                        isActive
+                                            ? `border-transparent ${lens.accent.chip} ${lens.accent.text}`
+                                            : 'border-border bg-card/60 text-muted-foreground'
+                                    }`}
+                                >
+                                    <lens.icon className="size-4" />
+                                    {lens.label}
+                                </button>
+                            );
+                        })}
+                    </div>
+
+                    {/* Desktop lens list */}
+                    <div className="hidden lg:flex lg:h-full lg:flex-col">
+                        <div className="flex flex-col gap-2">
+                            {lenses.map((lens, i) => {
+                                const isActive = i === activeIndex;
+
+                                return (
+                                    <button
+                                        key={lens.id}
+                                        type="button"
+                                        onClick={() => setActiveIndex(i)}
+                                        aria-pressed={isActive}
+                                        className={`group relative flex items-start gap-4 rounded-2xl border px-5 py-4 text-left transition-all duration-300 ${
+                                            isActive
+                                                ? 'border-border bg-card shadow-lg shadow-foreground/5 dark:shadow-black/30'
+                                                : 'border-transparent hover:border-border/70 hover:bg-card/40'
+                                        }`}
+                                    >
+                                        {isActive && (
+                                            <motion.span
+                                                layoutId="why-exer-lens-bar"
+                                                className={`absolute top-5 bottom-5 -left-[2px] w-[3px] rounded-full ${lens.accent.dot}`}
+                                            />
+                                        )}
+                                        <span
+                                            className={`flex size-10 shrink-0 items-center justify-center rounded-xl ${lens.accent.chip} ${lens.accent.text} ${isActive ? '' : 'opacity-60'}`}
+                                        >
+                                            <lens.icon className="size-5" />
+                                        </span>
+                                        <span className="min-w-0 flex-1">
+                                            <span className="flex items-baseline justify-between gap-3">
+                                                <span className="text-base font-bold text-foreground">
+                                                    {lens.label}
+                                                </span>
+                                                <span className="text-[11px] font-bold tracking-widest text-muted-foreground/50 tabular-nums">
+                                                    {String(i + 1).padStart(
+                                                        2,
+                                                        '0',
+                                                    )}
+                                                </span>
+                                            </span>
+                                            <span className="mt-0.5 block text-sm text-muted-foreground">
+                                                {lens.tagline}
+                                            </span>
+                                        </span>
+                                    </button>
+                                );
+                            })}
+                        </div>
+
+                        <div className="mt-auto rounded-2xl border border-dashed border-border bg-background/40 px-5 py-4">
+                            <p className="text-sm leading-relaxed text-muted-foreground">
+                                Most projects arrive through one lens and
+                                struggle on another. Tell us the problem — we
+                                will show you which ones it touches.
+                            </p>
+                            <a
+                                href="#contact-cta"
+                                className="group mt-3 inline-flex items-center gap-2 text-sm font-bold text-primary"
+                            >
+                                Start with a conversation
+                                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Detail panel */}
+                    <RevealElement delay={60}>
+                        <div className="relative h-full overflow-hidden rounded-[2rem] border border-border bg-card/70 p-7 backdrop-blur-xl lg:p-9 dark:shadow-2xl">
+                            <div
+                                className={`pointer-events-none absolute -top-28 -right-20 size-64 rounded-full blur-[90px] transition-colors duration-500 ${activeLens.accent.glow}`}
+                            />
+                            <span
+                                aria-hidden
+                                className="pointer-events-none absolute top-5 right-7 text-6xl font-black text-foreground/[0.045] tabular-nums"
+                            >
+                                {activeNumber}
+                            </span>
+
+                            <motion.div
+                                key={activeLens.id}
+                                initial={{ opacity: 0, y: 14 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{
+                                    duration: 0.4,
+                                    ease: 'easeOut',
+                                }}
+                                aria-live="polite"
+                                className="relative z-10 flex h-full flex-col"
+                            >
+                                <div className="flex items-center gap-3">
+                                    <span
+                                        className={`flex size-11 items-center justify-center rounded-2xl ${activeLens.accent.chip} ${activeLens.accent.text}`}
+                                    >
+                                        <activeLens.icon className="size-5" />
+                                    </span>
+                                    <div>
+                                        <p className="text-[11px] font-extrabold tracking-[0.18em] text-muted-foreground uppercase">
+                                            Lens {activeNumber} / 04
+                                        </p>
+                                        <p className="text-lg font-bold text-foreground">
+                                            {activeLens.label}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <p className="mt-7 text-[11px] font-extrabold tracking-[0.18em] text-muted-foreground uppercase">
+                                    The question we ask
+                                </p>
+                                <p className="mt-3 text-xl leading-snug font-semibold text-balance text-foreground sm:text-2xl">
+                                    “{activeLens.question}”
+                                </p>
+                                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                                    {activeLens.description}
+                                </p>
+
+                                <div className="mt-7 border-t border-border pt-6">
+                                    <p className="text-[11px] font-extrabold tracking-[0.18em] text-muted-foreground uppercase">
+                                        What that gives you
+                                    </p>
+                                    <ul className="mt-4 space-y-2.5">
+                                        {activeLens.outcomes.map((outcome) => (
+                                            <li
+                                                key={outcome}
+                                                className="flex items-start gap-2.5 text-sm text-muted-foreground"
+                                            >
+                                                <BadgeCheck
+                                                    className={`mt-0.5 size-4 shrink-0 ${activeLens.accent.text}`}
+                                                />
+                                                {outcome}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div className="mt-auto flex items-center justify-between gap-4 pt-7">
+                                    <div
+                                        aria-hidden
+                                        className="flex items-center gap-1.5"
+                                    >
+                                        {lenses.map((lens, i) => (
+                                            <span
+                                                key={lens.id}
+                                                className={`h-1.5 rounded-full transition-all duration-300 ${
+                                                    i === activeIndex
+                                                        ? `w-6 ${lens.accent.dot}`
+                                                        : 'w-1.5 bg-border'
+                                                }`}
+                                            />
+                                        ))}
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={selectNextLens}
+                                        className="group inline-flex items-center gap-2 text-sm font-bold text-foreground transition-colors hover:text-primary"
+                                    >
+                                        Next lens
+                                        <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                                    </button>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </RevealElement>
+                </div>
+
+                {/* Closing strip */}
+                <RevealElement delay={120}>
+                    <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-2xl border border-border bg-card/50 px-6 py-5 backdrop-blur-xl sm:flex-row sm:items-center">
+                        <p className="text-sm text-muted-foreground">
+                            Four lenses.{' '}
+                            <span className="font-bold text-foreground">
+                                One product people can actually use.
+                            </span>
+                        </p>
+                        <a
+                            href="#approach"
+                            className="group inline-flex items-center gap-2 text-sm font-bold text-primary"
+                        >
+                            See how we combine them
+                            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                        </a>
+                    </div>
+                </RevealElement>
+            </div>
+        </section>
+    );
+};
 
 /* ------------------------------------------------------------------ */
 /*  Home page                                                          */
@@ -494,7 +832,7 @@ const Home = () => {
                             </div>
 
                             {/* Visual */}
-                            <div className="lg:col-span-6">
+                            <div className="order-first lg:order-last lg:col-span-6">
                                 <HeroVisual />
                             </div>
                         </div>
@@ -502,7 +840,10 @@ const Home = () => {
                 </section>
 
                 {/* ============ WHO IS EXER ============ */}
-                <section id="who" className="scroll-mt-28 px-4 py-20 lg:py-28 bg-card/60">
+                <section
+                    id="who"
+                    className="scroll-mt-28 bg-card/60 px-4 py-20 lg:py-28"
+                >
                     <div className="mx-auto max-w-6xl">
                         {/* Experiment */}
                         {/* <div className="relative z-10 mx-auto max-w-6xl pt-24 lg:pt-32">
@@ -774,12 +1115,12 @@ const Home = () => {
                 </section>
 
                 {/* ============ FEATURED PROJECT — OHSA ============ */}
-                <section id="ohsa" className="scroll-mt-28 px-4 py-20 lg:py-28">
+                <section
+                    id="ohsa"
+                    className="scroll-mt-28 bg-card/60 px-4 py-20 lg:py-28"
+                >
                     <div className="mx-auto max-w-6xl">
-                        <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-card/60 backdrop-blur-xl dark:shadow-2xl">
-                            <div className="pointer-events-none absolute -top-32 -right-32 size-96 rounded-full bg-primary/10 blur-[100px]" />
-                            <div className="pointer-events-none absolute -bottom-32 -left-32 size-96 rounded-full bg-secondary/10 blur-[100px]" />
-
+                        <div className="relative overflow-hidden backdrop-blur-xl">
                             <div className="relative z-10 grid grid-cols-1 items-center gap-10 p-8 lg:grid-cols-2 lg:gap-14 lg:p-14">
                                 {/* Story */}
                                 <div className="flex flex-col gap-6">
@@ -942,19 +1283,18 @@ const Home = () => {
                                             Free Workshops
                                         </SectionBadge>
                                         <h2 className="text-center text-3xl font-bold text-foreground lg:text-4xl">
-                                            We occasionally launch{' '}
+                                            Ready to shape the future of{' '}
                                             <span className="text-primary">
-                                                free workshops
+                                                digital health?
                                             </span>{' '}
-                                            on UX &amp; digital health
                                         </h2>
                                         <p className="max-w-2xl text-center text-base leading-relaxed text-muted-foreground lg:text-lg">
-                                            From time to time we open a free
-                                            workshop series for students, health
-                                            professionals and innovators. Places
-                                            are limited and applications are
-                                            only accepted while an edition is
-                                            open.
+                                            Join a free workshop to explore UX
+                                            and digital health, learn alongside
+                                            students and professionals, and turn
+                                            your ideas into impact. Find an
+                                            upcoming edition and apply while
+                                            applications are open.
                                         </p>
                                         <div className="mt-1 flex flex-wrap gap-2">
                                             <Link
@@ -1160,65 +1500,7 @@ const Home = () => {
                 </section> */}
 
                 {/* ============ WHY EXER ============ */}
-                <section
-                    id="why-exer"
-                    className="scroll-mt-28 px-4 py-20 lg:py-28"
-                >
-                    <div className="mx-auto max-w-6xl">
-                        <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-card/60 p-8 backdrop-blur-xl lg:p-14 dark:shadow-2xl">
-                            <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/10 blur-[90px]" />
-
-                            <div className="relative z-10 mx-auto max-w-3xl text-center">
-                                <RevealElement>
-                                    <SectionIntro
-                                        badge="Why EXER?"
-                                        title={
-                                            <>
-                                                Healthcare × Technology × UX ×{' '}
-                                                <span className="text-primary">
-                                                    Innovation
-                                                </span>
-                                            </>
-                                        }
-                                    />
-                                </RevealElement>
-
-                                <RevealElement delay={100}>
-                                    <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                                        {intersection.map((item, i) => (
-                                            <div
-                                                key={item.label}
-                                                className="flex items-center gap-3"
-                                            >
-                                                <span className="flex items-center gap-2 rounded-full border border-primary/20 bg-card/80 px-5 py-2.5 text-sm font-bold text-foreground shadow-lg">
-                                                    <item.icon className="size-4.5 text-primary" />
-                                                    {item.label}
-                                                </span>
-                                                {i <
-                                                    intersection.length - 1 && (
-                                                    <span className="text-lg font-black text-primary">
-                                                        ×
-                                                    </span>
-                                                )}
-                                            </div>
-                                        ))}
-                                    </div>
-                                </RevealElement>
-
-                                <RevealElement delay={160}>
-                                    <p className="mt-8 text-base leading-relaxed text-muted-foreground lg:text-lg">
-                                        We don't approach healthcare products as
-                                        technology projects alone. We consider
-                                        the healthcare problem, the people using
-                                        the solution, the environment in which
-                                        it will be used, and the realities of
-                                        implementation.
-                                    </p>
-                                </RevealElement>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <WhyExerLenses />
 
                 {/* ============ ECOSYSTEM ============ */}
                 <section
@@ -1251,7 +1533,7 @@ const Home = () => {
                                         experience and help participants grow.
                                     </p>
                                     <div className="mt-4">
-                                       <div className="relative size-20 flex items-center justify-center bg-white shrink-0 overflow-hidden rounded-full">
+                                        <div className="relative flex size-20 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white">
                                             <img
                                                 src="/IMG-20261103-WA0019.jpg"
                                                 // alt={member.alt}
@@ -1279,7 +1561,7 @@ const Home = () => {
                                         solutions.
                                     </p>
                                     <div className="mt-4">
-                                        <div className="relative size-20 flex items-center justify-center bg-white shrink-0 overflow-hidden rounded-full">
+                                        <div className="relative flex size-20 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white">
                                             <img
                                                 src="/Logo-OHSA.png"
                                                 // alt={member.alt}

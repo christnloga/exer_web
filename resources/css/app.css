@@ -81,7 +81,7 @@
     --popover-foreground: #0f172a;
     --primary: #00a99d;
     --primary-foreground: #ffffff;
-    --secondary: #f1f5f9;
+    --secondary: oklch(70.7% 0.165 254.624);
     --secondary-foreground: #0f172a;
     --muted: #f1f5f9;
     --muted-foreground: #64748b;
