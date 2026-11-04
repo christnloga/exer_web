@@ -499,7 +499,7 @@ const WhyExerLenses = () => {
                 {/* Lens switcher + detail */}
                 <div className="mt-12 grid gap-6 lg:mt-16 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-10">
                     {/* Mobile chooser */}
-                    <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden">
+                    <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 lg:hidden">
                         {lenses.map((lens, i) => {
                             const isActive = i === activeIndex;
 
@@ -523,7 +523,7 @@ const WhyExerLenses = () => {
                     </div>
 
                     {/* Desktop lens list */}
-                    <div className="hidden lg:flex lg:h-full lg:flex-col">
+                    <div className="hidden lg:block">
                         <div className="flex flex-col gap-2">
                             {lenses.map((lens, i) => {
                                 const isActive = i === activeIndex;
@@ -570,21 +570,6 @@ const WhyExerLenses = () => {
                                     </button>
                                 );
                             })}
-                        </div>
-
-                        <div className="mt-auto rounded-2xl border border-dashed border-border bg-background/40 px-5 py-4">
-                            <p className="text-sm leading-relaxed text-muted-foreground">
-                                Most projects arrive through one lens and
-                                struggle on another. Tell us the problem — we
-                                will show you which ones it touches.
-                            </p>
-                            <a
-                                href="#contact-cta"
-                                className="group mt-3 inline-flex items-center gap-2 text-sm font-bold text-primary"
-                            >
-                                Start with a conversation
-                                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                            </a>
                         </div>
                     </div>
 
@@ -1119,6 +1104,8 @@ const Home = () => {
                     id="ohsa"
                     className="scroll-mt-28 bg-card/60 px-4 py-20 lg:py-28"
                 >
+                    <div className="pointer-events-none absolute -top-32 -right-32 size-96 rounded-full bg-primary/10 blur-[100px]" />
+                    <div className="pointer-events-none absolute -bottom-32 -left-32 size-96 rounded-full bg-secondary/10 blur-[100px]" />
                     <div className="mx-auto max-w-6xl">
                         <div className="relative overflow-hidden backdrop-blur-xl">
                             <div className="relative z-10 grid grid-cols-1 items-center gap-10 p-8 lg:grid-cols-2 lg:gap-14 lg:p-14">
