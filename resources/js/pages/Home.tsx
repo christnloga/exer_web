@@ -669,7 +669,7 @@ const Home = () => {
                                                 src={member.image}
                                                 alt={member.alt}
                                                 loading="lazy"
-                                                className="h-full w-full object-cover object-top scale-125 transition-transform duration-700 group-hover:scale-110"
+                                                className="h-full w-full scale-125 object-cover object-top transition-transform duration-700 group-hover:scale-110"
                                             />
                                         </div>
 
@@ -963,56 +963,28 @@ const Home = () => {
                                 <div className="pointer-events-none absolute -top-24 -right-24 size-64 rounded-full bg-secondary/10 blur-[80px]" />
                                 <div className="pointer-events-none absolute -bottom-24 -left-24 size-64 rounded-full bg-primary/10 blur-[80px]" />
 
-                                <div className="relative z-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
-                                    <div className="lg:col-span-7">
-                                        <div className="flex flex-col items-start gap-5">
-                                            <SectionBadge>
-                                                <GraduationCap className="size-3.5" />
-                                                Free Workshops
-                                            </SectionBadge>
-                                            <h2 className="text-3xl font-bold tracking-tight text-foreground lg:text-4xl">
-                                                We occasionally launch{' '}
-                                                <span className="text-primary">
-                                                    free workshops
-                                                </span>{' '}
-                                                on UX &amp; digital health
-                                            </h2>
-                                            <p className="max-w-2xl text-base leading-relaxed text-muted-foreground lg:text-lg">
-                                                From time to time we open a free
-                                                workshop series for students,
-                                                health professionals and
-                                                innovators. Places are limited
-                                                and applications are only
-                                                accepted while an edition is
-                                                open.
-                                            </p>
-                                            <div className="mt-1 flex flex-wrap gap-2">
-                                                {whyJoin
-                                                    .slice(0, 3)
-                                                    .map((item) => (
-                                                        <span
-                                                            key={item.title}
-                                                            className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3.5 py-1.5 text-xs font-semibold text-muted-foreground"
-                                                        >
-                                                            <BadgeCheck className="size-3.5 text-primary" />
-                                                            {item.title}
-                                                        </span>
-                                                    ))}
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="lg:col-span-5">
-                                        <div className="flex flex-col gap-4 rounded-3xl border border-border bg-background/60 p-7">
-                                            <span className="flex size-12 items-center justify-center rounded-2xl bg-secondary/10 text-secondary">
-                                                <CalendarRange className="size-6" />
-                                            </span>
-                                            <p className="text-sm leading-relaxed text-muted-foreground">
-                                                Browse past and ongoing
-                                                editions, the programme outline
-                                                and how to apply when a workshop
-                                                becomes available.
-                                            </p>
+                                <div className="relative z-10 items-center">
+                                    <div className="flex flex-col items-center gap-5">
+                                        <SectionBadge>
+                                            <GraduationCap className="size-3.5" />
+                                            Free Workshops
+                                        </SectionBadge>
+                                        <h2 className="text-center text-3xl font-bold text-foreground lg:text-4xl">
+                                            We occasionally launch{' '}
+                                            <span className="text-primary">
+                                                free workshops
+                                            </span>{' '}
+                                            on UX &amp; digital health
+                                        </h2>
+                                        <p className="max-w-2xl text-center text-base leading-relaxed text-muted-foreground lg:text-lg">
+                                            From time to time we open a free
+                                            workshop series for students, health
+                                            professionals and innovators. Places
+                                            are limited and applications are
+                                            only accepted while an edition is
+                                            open.
+                                        </p>
+                                        <div className="mt-1 flex flex-wrap gap-2">
                                             <Link
                                                 href={`/${locale}/workshops`}
                                                 className="group inline-flex h-12 w-fit items-center gap-2 rounded-xl bg-primary px-7 text-sm font-bold text-white shadow-lg transition-all hover:scale-[1.03] hover:shadow-[0_0_40px_-10px_rgba(0,166,244,0.8)]"
@@ -1062,7 +1034,7 @@ const Home = () => {
                 </section> */}
 
                 {/* ============ CONSULTANCY & PRICING ============ */}
-                <section
+                {/* <section
                     id="pricing"
                     className="scroll-mt-28 bg-card/30 px-4 py-20 lg:py-28"
                 >
@@ -1136,7 +1108,7 @@ const Home = () => {
                             ))}
                         </div>
 
-                        {/* Not sure banner */}
+
                         <RevealElement delay={120}>
                             <div className="mt-8 flex flex-col items-center gap-5 rounded-3xl border border-border bg-card/60 p-8 text-center backdrop-blur-xl lg:flex-row lg:justify-between lg:text-left">
                                 <div className="flex items-center gap-4">
@@ -1164,7 +1136,7 @@ const Home = () => {
                             </div>
                         </RevealElement>
                     </div>
-                </section>
+                </section> */}
 
                 {/* ============ WHO WE WORK WITH ============ */}
                 {/* <section

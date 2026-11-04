@@ -123,7 +123,7 @@ const Contact = () => {
 
             <div className="relative z-10 mx-auto max-w-6xl pt-24 lg:pt-32">
                 <RevealElement>
-                    <section className="relative overflow-hidden rounded-[2.5rem] bg-linear-to-br from-[#00A6F4] via-[#4C7BF0] to-[#7C3AED] px-6 pt-14 pb-36 text-center sm:px-10 sm:pt-16 lg:pb-44">
+                    <section className="relative overflow-hidden rounded-[2.5rem] bg-linear-to-br from-[#00A6F4] via-primary to-[#7C3AED] px-6 pt-14 pb-36 text-center sm:px-10 sm:pt-16 lg:pb-44">
                         <div className="pointer-events-none absolute -top-24 -right-16 size-72 rounded-full bg-white/15 blur-3xl" />
                         <div className="pointer-events-none absolute -bottom-32 -left-10 size-80 rounded-full bg-black/10 blur-3xl" />
 
