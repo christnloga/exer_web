@@ -369,7 +369,6 @@ const HeroVisual = () => (
             transition={{ duration: 0.7, delay: 0.4 }}
             className="z-20 drop-shadow-2xl"
         />
-
     </div>
 );
 
@@ -406,7 +405,7 @@ const Home = () => {
 
                 {/* ============ HERO ============ */}
                 <section className="relative pt-[68px]">
-                    <div className="relative overflow-hidden border border-border bg-card/60 backdrop-blur-xl dark:shadow-2xl">
+                    <div className="relative overflow-hidden bg-card/0 backdrop-blur-xl">
                         <div className="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-primary/15 blur-[110px]" />
                         <div className="pointer-events-none absolute top-40 -right-20 h-[480px] w-[480px] rounded-full bg-secondary/10 blur-[120px]" />
                         {/* <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]" /> */}
@@ -503,8 +502,61 @@ const Home = () => {
                 </section>
 
                 {/* ============ WHO IS EXER ============ */}
-                <section id="who" className="scroll-mt-28 px-4 py-20 lg:py-28">
+                <section id="who" className="scroll-mt-28 px-4 py-20 lg:py-28 bg-card/60">
                     <div className="mx-auto max-w-6xl">
+                        {/* Experiment */}
+                        {/* <div className="relative z-10 mx-auto max-w-6xl pt-24 lg:pt-32">
+                            <RevealElement>
+                                <div className="relative z-20 overflow-hidden rounded-[2.5rem] bg-card px-6 pt-14 pb-36 text-center sm:px-10 sm:pt-16 lg:pb-44">
+                                    <img
+                                        src="/file_00000000dca0820eb485809f5101cf1e.png"
+                                        alt=""
+                                        className="absolute inset-0 size-full object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-card/95" />
+                                    <div className="pointer-events-none absolute -top-24 -right-16 size-72 rounded-full bg-white/15 blur-3xl" />
+                                    <div className="pointer-events-none absolute -bottom-32 -left-10 size-80 rounded-full bg-black/10 blur-3xl" />
+
+                                    <div className="relative z-10">
+                                        <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-4 py-1.5 text-xs font-bold tracking-widest text-white uppercase backdrop-blur-sm">
+                                            <Sparkles className="size-3.5" />
+                                            Contact
+                                        </span>
+                                        <h1 className="mt-6 text-3xl font-black tracking-tight text-white sm:text-5xl">
+                                            Get In Touch
+                                        </h1>
+                                        <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/85 sm:text-base">
+                                            EXER is a digital health user
+                                            experience and innovation
+                                            consultancy helping healthcare
+                                            organizations, startups, NGOs and
+                                            health professionals design digital
+                                            solutions that are useful, intuitive
+                                            and built around real healthcare
+                                            needs.
+                                        </p>
+                                    </div>
+                                </div>
+                            </RevealElement>
+
+                            <RevealElement delay={80}>
+                                <div className="relative z-30 mx-auto -mt-24 max-w-5xl rounded-[2rem] border border-border bg-card p-6 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-10 lg:-mt-28">
+                                    <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+
+                                        <div>
+                                            <h2 className="text-2xl font-extrabold tracking-tight text-foreground">
+                                                Send us a message
+                                            </h2>
+                                            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                                                Fill in the form and we will get
+                                                back to you, usually within one
+                                                business day.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </RevealElement>
+                        </div> */}
                         <RevealElement>
                             <SectionIntro
                                 badge="Who is EXER?"
@@ -1169,7 +1221,7 @@ const Home = () => {
                 </section>
 
                 {/* ============ ECOSYSTEM ============ */}
-                {/* <section
+                <section
                     id="ecosystem"
                     className="scroll-mt-28 px-4 py-20 lg:py-28"
                 >
@@ -1198,6 +1250,16 @@ const Home = () => {
                                         organizations that support the learning
                                         experience and help participants grow.
                                     </p>
+                                    <div className="mt-4">
+                                       <div className="relative size-20 flex items-center justify-center bg-white shrink-0 overflow-hidden rounded-full">
+                                            <img
+                                                src="/IMG-20261103-WA0019.jpg"
+                                                // alt={member.alt}
+                                                loading="lazy"
+                                                className="h-full object-center"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             </RevealElement>
                             <RevealElement delay={120}>
@@ -1216,11 +1278,21 @@ const Home = () => {
                                         validating real digital health
                                         solutions.
                                     </p>
+                                    <div className="mt-4">
+                                        <div className="relative size-20 flex items-center justify-center bg-white shrink-0 overflow-hidden rounded-full">
+                                            <img
+                                                src="/Logo-OHSA.png"
+                                                // alt={member.alt}
+                                                loading="lazy"
+                                                className="h-full w-full scale-125 object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             </RevealElement>
                         </div>
                     </div>
-                </section> */}
+                </section>
 
                 {/* ============ FINAL CTA ============ */}
                 <section
