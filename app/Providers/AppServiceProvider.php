@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
+use Mailtrap\Api\EmailsSendApiInterface;
+use Mailtrap\MailtrapClient;
+use RuntimeException;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,7 +19,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(EmailsSendApiInterface::class, function (): EmailsSendApiInterface {
+            $apiKey = config('services.mailtrap.api_key');
+
+            if (! is_string($apiKey) || trim($apiKey) === '') {
+                throw new RuntimeException('Mailtrap API token is not configured. Set MAILTRAP_API_TOKEN.');
+            }
+
+            return MailtrapClient::initSendingEmails(apiKey: $apiKey);
+        });
     }
 
     /**
