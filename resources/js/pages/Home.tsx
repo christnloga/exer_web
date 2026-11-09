@@ -364,7 +364,7 @@ const SectionIntro = ({
         }`}
     >
         <SectionBadge>{badge}</SectionBadge>
-        <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-foreground lg:text-4xl">
+        <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
             {title}
         </h2>
         {subtitle && (
@@ -827,7 +827,7 @@ const Home = () => {
                 {/* ============ WHO IS EXER ============ */}
                 <section
                     id="who"
-                    className="scroll-mt-28 bg-card/60 px-4 py-20 lg:py-28"
+                    className="scroll-mt-28 bg-card px-4 py-20 lg:py-28"
                 >
                     <div className="mx-auto max-w-6xl">
                         {/* Experiment */}
@@ -898,6 +898,16 @@ const Home = () => {
                                 subtitle="EXER is a digital health user experience and innovation consultancy helping healthcare organizations, startups, NGOs and health professionals design digital solutions that are useful, intuitive and built around real healthcare needs."
                             />
                         </RevealElement>
+                        <RevealElement>
+                            <div className="relative mt-8 h-[400px] overflow-hidden rounded-4xl">
+                                {/* <div className="absolute inset-0 z-10 bg-card/50" /> */}
+                                <img
+                                    src="/file_00000000dca0820eb485809f5101cf1e.png"
+                                    alt=""
+                                    className="absolute -top-32 saturate-0"
+                                />
+                            </div>
+                        </RevealElement>
 
                         {/* <RevealElement delay={100}>
                             <div className="mt-12 rounded-3xl border border-border bg-card/60 p-8 backdrop-blur-xl lg:p-10">
@@ -937,52 +947,59 @@ const Home = () => {
                 </section>
 
                 {/* ============ MEET THE TEAM ============ */}
-                <section id="team" className="scroll-mt-28 px-4 py-20 lg:py-28">
+                <section
+                    id="team"
+                    className="scroll-mt-28 bg-card px-4 py-20 lg:py-28"
+                >
                     <div className="mx-auto max-w-6xl">
-                        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
-                            <RevealElement>
-                                <SectionIntro
-                                    badge="Meet the Team"
-                                    align="left"
-                                    title={
-                                        <>
-                                            The people behind{' '}
-                                            <span className="text-primary">
-                                                EXER
-                                            </span>
-                                        </>
-                                    }
-                                    subtitle="A complementary team combining biomedical science, product strategy, software architecture and UX design to improve digital health experiences."
-                                />
-                            </RevealElement>
-                            {team.map((member, i) => (
-                                <RevealElement
-                                    key={member.name}
-                                    delay={i * 100}
-                                >
-                                    <div className="group flex h-full flex-col items-center justify-start gap-4 py-10 text-center transition-all">
-                                        {/* Photo */}
-                                        <div className="relative size-40 shrink-0 overflow-hidden rounded-full ring-2 ring-primary/20 ring-offset-4 ring-offset-card">
-                                            <img
-                                                src={member.image}
-                                                alt={member.alt}
-                                                loading="lazy"
-                                                className="h-full w-full scale-125 object-cover object-top transition-transform duration-700 group-hover:scale-110"
-                                            />
-                                        </div>
-
-                                        {/* Name & role */}
-                                        <div className="flex flex-col gap-1.5">
-                                            <h3 className="text-md font-bold text-foreground">
-                                                {member.name}
-                                            </h3>
-                                            <p className="text-xs leading-snug font-medium text-muted-foreground">
-                                                {member.role}
-                                            </p>
-                                        </div>
-                                    </div>
+                        <div className="mt-14 grid grid-cols-1 gap-6 lg:gap-14 md:grid-cols-4">
+                            <div className="col-span-2">
+                                <RevealElement>
+                                    <SectionIntro
+                                        badge="Meet the Team"
+                                        align="left"
+                                        title={
+                                            <>
+                                                The people behind{' '}
+                                                <span className="text-primary">
+                                                    EXER
+                                                </span>
+                                            </>
+                                        }
+                                        subtitle="A complementary team combining biomedical science, product strategy, software architecture and UX design to improve digital health experiences."
+                                    />
                                 </RevealElement>
-                            ))}
+                            </div>
+                            <div className="col-span-2 flex">
+                                {team.map((member, i) => (
+                                    <RevealElement
+                                        key={member.name}
+                                        delay={i * 100}
+                                    >
+                                        <div className="group flex h-full flex-col items-center justify-start gap-4 py-10 text-center transition-all">
+                                            {/* Photo */}
+                                            <div className="relative size-50 shrink-0 overflow-hidden rounded-full ring-2 ring-primary/20 ring-offset-4 ring-offset-card">
+                                                <img
+                                                    src={member.image}
+                                                    alt={member.alt}
+                                                    loading="lazy"
+                                                    className="h-full w-full scale-125 object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                                                />
+                                            </div>
+
+                                            {/* Name & role */}
+                                            {/* <div className="flex flex-col gap-1.5">
+                                                <h3 className="text-md font-bold text-foreground">
+                                                    {member.name}
+                                                </h3>
+                                                <p className="text-xs leading-snug font-medium text-muted-foreground">
+                                                    {member.role}
+                                                </p>
+                                            </div> */}
+                                        </div>
+                                    </RevealElement>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </section>
