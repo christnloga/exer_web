@@ -36,7 +36,7 @@
                             <p style="margin:0 0 24px; color:#334155; font-size:16px; line-height:1.7;">
                                 Our team will review your application and contact you at this email address with an update and any next steps.
                             </p>
-                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin:0 0 24px; background-color:#f0fdfa; border-left:4px solid #00a99d;">
+                            {{-- <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin:0 0 24px; background-color:#f0fdfa; border-left:4px solid #00a99d;">
                                 <tr>
                                     <td style="padding:16px 18px;">
                                         <p style="margin:0 0 5px; color:#0d3976; font-size:13px; font-weight:bold;">A quick note</p>
@@ -45,10 +45,10 @@
                                         </p>
                                     </td>
                                 </tr>
-                            </table>
-                            <p style="margin:0; color:#334155; font-size:15px; line-height:1.7;">
+                            </table> --}}
+                            {{-- <p style="margin:0; color:#334155; font-size:15px; line-height:1.7;">
                                 If you have a question in the meantime, reply to this email and our team will be glad to help.
-                            </p>
+                            </p> --}}
                         </td>
                     </tr>
                     <tr>
