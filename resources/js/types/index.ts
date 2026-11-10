@@ -93,6 +93,7 @@ export type WorkshopApplicant = {
     full_name: string;
     email: string;
     phone: string;
+    country: string | null;
     linkedin_url: string | null;
     gender: 'male' | 'female' | 'non_binary' | 'prefer_not_to_say' | null;
     language: 'english' | 'french' | 'bilingual' | 'other' | null;

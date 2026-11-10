@@ -51,6 +51,7 @@ import {
     useWorkshopApplicants,
 } from '@/hooks/use-workshop-applicants';
 import AppLayout from '@/layouts/app-layout';
+import { countryFlagUrl, findCountry } from '@/lib/countries';
 import { cn } from '@/lib/utils';
 import { workshops as dashboardWorkshops } from '@/routes/dashboard/index';
 import type { BreadcrumbItem, Workshop, WorkshopApplicant } from '@/types';
@@ -1240,6 +1241,24 @@ function ApplicantDetailSheet({
                                         <Phone className="size-3.5 text-muted-foreground" />
                                         {applicant.phone}
                                     </span>
+                                </DetailField>
+                                <DetailField label="Country">
+                                    {applicant.country ? (
+                                        <span className="flex items-center gap-2">
+                                            <img
+                                                src={countryFlagUrl(
+                                                    applicant.country,
+                                                    20,
+                                                )}
+                                                alt=""
+                                                className="h-3.5 w-5 rounded-[2px] object-cover ring-1 ring-border/60"
+                                            />
+                                            {findCountry(applicant.country)
+                                                ?.name ?? applicant.country}
+                                        </span>
+                                    ) : (
+                                        '—'
+                                    )}
                                 </DetailField>
                                 {applicant.linkedin_url && (
                                     <DetailField label="LinkedIn">

@@ -22,6 +22,7 @@ class WorkshopApplicantFactory extends Factory
             // Section 1 — About you
             'full_name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
+            'country' => fake()->randomElement(['CM', 'NG', 'GH', 'CI', 'SN', 'FR', 'BE', 'CA', 'US', 'GB']),
             'phone' => fake()->phoneNumber(),
             'linkedin_url' => fake()->optional()->url(),
             'gender' => fake()->randomElement(['male', 'female', 'non_binary', 'prefer_not_to_say']),

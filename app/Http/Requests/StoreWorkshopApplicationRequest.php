@@ -25,6 +25,8 @@ class StoreWorkshopApplicationRequest extends FormRequest
     {
         $this->merge([
             'linkedin_url' => $this->formatUrl($this->linkedin_url),
+            'country' => $this->formatCountryCode($this->country),
+            'phone' => $this->formatPhoneNumber($this->phone),
             'motivation' => Str::squish((string) $this->motivation),
             'goals' => Str::squish((string) $this->goals),
             'previous_project_description' => Str::squish((string) $this->previous_project_description),
@@ -53,7 +55,8 @@ class StoreWorkshopApplicationRequest extends FormRequest
                 Rule::unique('workshop_applicants', 'email')
                     ->where('workshop_id', $workshopId),
             ],
-            'phone' => ['required', 'string', 'max:30'],
+            'phone' => ['required', 'string', 'regex:/^\+[1-9]\d{6,14}$/'],
+            'country' => ['required', 'string', 'size:2', 'regex:/^[A-Z]{2}$/'],
             'linkedin_url' => ['nullable', 'url', 'max:255'],
             'gender' => [
                 'required',
@@ -124,6 +127,9 @@ class StoreWorkshopApplicationRequest extends FormRequest
     {
         return [
             'email.unique' => 'An application for this workshop with this email has already been submitted. We will be in touch!',
+            'phone.regex' => 'Please enter a valid phone number, including your country code.',
+            'country.required' => 'Please select your country.',
+            'country.size' => 'Please select a valid country.',
             'interests.max' => 'You can select up to 3 areas of interest.',
             'interests.min' => 'Please select at least one area of interest.',
             'consent.accepted' => 'Please confirm that the information you provided is accurate.',
@@ -131,6 +137,26 @@ class StoreWorkshopApplicationRequest extends FormRequest
             'motivation.min' => 'Tell us a little more about what motivated you to apply.',
             'goals.min' => 'Share a little more detail about what you hope to achieve.',
         ];
+    }
+
+    /**
+     * Normalize an ISO 3166-1 alpha-2 country code.
+     */
+    private function formatCountryCode(?string $country): ?string
+    {
+        $code = strtoupper(trim((string) $country));
+
+        return $code === '' ? null : $code;
+    }
+
+    /**
+     * Normalize a phone number into an E.164-like international format.
+     */
+    private function formatPhoneNumber(?string $phone): string
+    {
+        $digits = preg_replace('/\D+/', '', (string) $phone);
+
+        return $digits ? '+'.$digits : (string) $phone;
     }
 
     /**

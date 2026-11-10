@@ -21,6 +21,7 @@ class WorkshopApplicant extends Model
         // Section 1 — About you
         'full_name',
         'email',
+        'country',
         'phone',
         'linkedin_url',
         'gender',
