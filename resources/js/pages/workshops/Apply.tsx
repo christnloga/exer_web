@@ -179,7 +179,8 @@ const isValidUrl = (value: string): boolean => {
     }
 };
 
-const onlyDigits = (value?: string): string => (value ?? '').replace(/\D+/g, '');
+const onlyDigits = (value?: string): string =>
+    (value ?? '').replace(/\D+/g, '');
 
 const getDialCode = (countryCode: string): string =>
     findCountry(countryCode)?.dial ?? '';
@@ -267,9 +268,11 @@ const validateStep = (
             }
 
             if (!Array.isArray(data.interests) || data.interests.length < 1) {
-                stepErrors.interests = 'Please select at least one area of interest.';
+                stepErrors.interests =
+                    'Please select at least one area of interest.';
             } else if (data.interests.length > 3) {
-                stepErrors.interests = 'Please select no more than three areas of interest.';
+                stepErrors.interests =
+                    'Please select no more than three areas of interest.';
             }
 
             if (
@@ -354,8 +357,8 @@ const Apply = () => {
 
     useEffect(() => {
         const detected = detectCountryCode();
-            if (detected) {
-                setData('country', detected);
+        if (detected) {
+            setData('country', detected);
         }
         // The detected country is only applied once, on mount.
         // eslint-disable-next-line react-hooks/exhaustive-deps
